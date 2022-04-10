@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Vue CDN</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <div id="app" class="container-fluid mt-3">
+        <div class="jumbotron">
+            <h1>Bienvenidos a VueJS CDN</h1>
+            <hr>
+
+            <!-- ---------------------------------------------- -->
+            <!--             Directivas data binding            -->
+            <!-- ---------------------------------------------- -->
+            <h4><u>Interpolación / v-text / v-html</u></h4>
+            <b>{{ 3 + 4 }}</b>
+            <br><br>
+
+            <div>{{ mensaje }}</div>
+            <div v-text="mensaje"></div>
+            <div v-html="mensaje"></div>
+            <br>
+
+            <div>{{ mensajeHTML }}</div>
+            <div v-text="mensajeHTML"></div>
+            <div v-html="mensajeHTML"></div>
+            <hr>
+
+            <!-- ---------------------------------------------- -->
+            <h4><u>Property Binding / v-bind</u></h4>
+            <input type="text" value="123"> <br>
+            <input type="text" value="valor"> <br>
+            <input type="text" v-bind:value="valor"> {{ valor }} <br>
+            <input type="text" :value="valor"> {{ valor }} <br>
+            <hr>
+
+            <!-- ---------------------------------------------- -->
+            <h4><u>Event Binding / v-on</u></h4>
+            <button class="btn btn-success my-3 mr-2" v-on:click="contador++">
+                Contar {{ contador }}
+            </button>
+
+            <button class="btn btn-warning my-3 mr-2" @click="contador2++">
+                Contar {{ contador2 }}
+            </button>
+
+            <button class="btn btn-danger my-3" @click="incrementar()">
+                Contar {{ getContador() }}
+            </button>
+            <hr>
+
+            <!-- ---------------------------------------------- -->
+            <h4><u>Doble Data Binding / v-model</u></h4>
+            <br>
+
+            <h5>Manual</h5>
+            <input type="text" :value="valor2" @input="actualizar($event)"> {{ valor2 }} <br>
+
+            <h5>Automático</h5>
+            <input type="text" v-model="valor3"> {{ valor3 }} <br>
+
+            <br>
+            <hr>
+            <br>
+
+            <!-- ---------------------------------------------- -->
+            <!--             Directivas Estructurales           -->
+            <!-- ---------------------------------------------- -->
+            <h4><u>v-if / v-else-if / v-else</u></h4>
+
+            <!-- <button class="btn btn-warning my-3" @click="mostrar=!mostrar"> -->
+            <button class="btn btn-warning my-3" @click="incrementarMostrar()">
+                <!-- {{ mostrar? 'Ocultar':'Mostrar' }} -->
+                {{ getValorMostrar() }}
+            </button>
+
+            <!-- <p v-if="mostrar" class="alert alert-warning"> -->
+            <p v-if="mostrar==0" class="alert alert-warning">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, aut corporis. Consectetur molestiae
+                tempora id quasi quis, consequatur praesentium asperiores doloribus possimus dolore blanditiis sed
+                similique obcaecati. Numquam, iure eos?
+            </p>
+
+            <p v-else-if="mostrar==1" class="alert alert-success">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolor, consectetur non illum suscipit
+                quidem ducimus maxime, at reprehenderit quia sunt nemo ratione fugiat labore earum eum sequi ea aliquid?
+            </p>
+
+            <!-- <p v-if="!mostrar" class="alert alert-danger"> -->
+            <p v-else class="alert alert-danger">
+                <!-- Elemento removido -->
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore iste possimus voluptate dolorum
+                voluptatibus, quas pariatur explicabo praesentium vitae. Dolorem corporis, voluptatibus consectetur
+                nobis aut blanditiis fugiat non dolorum pariatur.
+            </p>
+
+            <!-- ------------------------------------------------------- -->
+            <h4><u>v-show</u></h4>
+
+            <button class="btn btn-warning my-3" @click="mostrar2=!mostrar2">
+                {{ mostrar2? 'Ocultar':'Mostrar' }}
+            </button>
+
+            <p v-show="mostrar2" class="alert alert-warning">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, aut corporis. Consectetur molestiae
+                tempora id quasi quis, consequatur praesentium asperiores doloribus possimus dolore blanditiis sed
+                similique obcaecati. Numquam, iure eos?
+            </p>
+
+            <p v-show="!mostrar2" class="alert alert-danger">
+                Elemento removido
+            </p>
+
+
+            <!-- ------------------------------------------------------- -->
+            <h4><u>v-for</u></h4>
+
+            <ul>
+                <li v-for="(usuario,index) in usuarios">
+                    <!-- {{ index + 1 }} - {{ usuario }} -->
+                    <!-- {{ (index + 1) + ' - ' + usuario }} -->
+                    {{ `${index+1} - ${usuario}` }}
+                </li>
+                <!-- <li>{{ usuarios[0] }}</li>
+                <li>{{ usuarios[1] }}</li>
+                <li>{{ usuarios[2] }}</li>
+                <li>{{ usuarios[3] }}</li> -->
+            </ul>
+
+            <br>
+
+            <ul>
+                <li v-for="(alumno,index) in alumnos">
+                    <!-- {{ index + 1 }} - <pre>{{ alumno }}</pre> -->
+                    <!-- {{ index + 1 }} - {{ alumno.nombre }} {{ alumno.apellido }} -->
+                    {{ (index + 1) + ' - ' + alumno.nombre + ' ' + alumno.apellido }}
+                </li>
+            </ul>
+
+            <div class="table-responsive">
+                <table class="table table-dark">
+                    <tr>
+                        <th>Index</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                        <th>Curso</th>
+                        <th>Foto</th>
+                    </tr>
+                    <tr v-for="(alumno,index) in alumnos">
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ alumno.nombre }}</td>
+                        <td>{{ alumno.apellido }}</td>
+                        <td>{{ alumno.edad }}</td>
+                        <td>{{ alumno.curso? 'Si':'No' }}</td>
+                        <td>
+                            <img :src="alumno.foto" width="50" :alt="alumno.nombre">
+                        </td>
+                    </tr>
+                </table>
+
+                <h4 class="alert alert-info">
+                    <span>{{ calcularAlumnosCurso.cantidad }} de {{ calcularAlumnosCurso.total }} alumno(s) hicieron el
+                        curso</span>
+                </h4>
+            </div>
+
+            <br>
+
+            <div class="media alert alert-info" v-for="(alumno,index) in alumnos">
+                <img :src="alumno.foto" width="150" :alt="alumno.nombre">
+                <div class="media-body ml-3">
+                    <h5 class="mt-0"><u>Alumno {{ index + 1 }}</u></h5>
+                    <br>
+                    <p>Nombre: {{ alumno.nombre }} {{ alumno.apellido }}</p>
+                    <p>Edad: <i>{{ alumno.edad }}</i></p>
+                    Hizo el curso <input type="checkbox" v-model="alumno.curso">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- https://v2.vuejs.org/ -->
+
+    <!-- versión de desarrollo, incluye advertencias de ayuda en la consola -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <!-- versión de producción, optimizada para tamaño y velocidad -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

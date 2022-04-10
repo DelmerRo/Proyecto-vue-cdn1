@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - Nuevos constructores de variables y funciones</title>
+</head>
+<body>
+    <script>
+        /*----------------------------------------------------------------*/
+        /*---------------Nuevos constructores de variables----------------*/
+        /*----------------------------------------------------------------*/
+        console.log('\n/* Diferencias entre var, let y const*/')
+        
+        //------------------------------------------------------
+        console.log('\n/* var - JS5*/')
+/*
+        var a = 'Hola'
+        var  a='Mundo'
+        console.log(a, typeof a)
+ 
+        var PI = 3.1415926
+        PI = 2.71
+        console.log(PI)
+
+        //function sumar(a,b){
+        //return a+b
+        //} 
+
+        var sumar = function(a,b){
+            return a+ b
+        }
+
+       // sumar='pepe'
+        console.log(sumar, typeof sumar)
+        
+        console.log(sumar(4,7))
+
+          //------------------------------------------------------
+          for(var i=0; i<5; i++){
+            console.log(i)
+          }
+
+          console.log(i)
+ */
+
+
+          //------------------------------------------------------
+        console.log('\n/* let / const - ES6 */')
+
+let a = 'Hola'
+//let a='Mundo'
+console.log(a, typeof a)
+
+const PI = 3.1415926
+//PI = 2.71
+console.log(PI)
+
+//function sumar(a,b){
+//return a+b
+//} 
+
+const sumar = function(a,b){
+    return a+ b
+}
+
+
+//sumar='pepe'
+console.log(sumar, typeof sumar)
+
+console.log(sumar(4,7))
+
+  //------------------------------------------------------
+  for(let i=0; i<5; i++){
+    console.log(i)
+  }
+ // console.log(i)
+
+
+
+ //------------------------------------------------------
+console.log('\n/*Bloque de codigo anonimo')
+{
+//var anonimo='anonimo'
+//let anonimo='anonimo'
+const anonimo='anonimo'
+console.log(anonimo)
+}
+//console.log(anonimo)
+
+//------------------------------------------------------
+console.log('\n/*Bloque de codigo condicional')
+
+if(true){
+//var condicional='condicional'
+let condicional='condicional'
+console.log(condicional)
+}
+//console.log(condicional)
+
+//------------------------------------------------------
+console.log('\n/*Bloque de codigo funcional')
+
+function foo(){
+//var funcional='funcional'
+let funcional='funcional'
+console.log(funcional)
+}
+foo()
+//console.log(funcional)
+
+
+
+        /*----------------------------------------------------------------*/
+        /*---------------Nuevos constructores de variables----------------*/
+        /*----------------------------------------------------------------*/
+
+        //------------------------------------------------------
+        console.log('\n/* funciones - JS5*/')
+
+        const resta = function (a,b){
+            return a-b
+        }
+
+        var num1 = 6, num2 = 9 
+
+        console.log('La resta de ' + num1 + ' y ' + num2 + ' Es igual a ' +resta(num1,num2))
+        
+        //------------------------------------------------------
+        console.log('\n/* arrow function o funciones o expresiones lambda - ES6*/')
+        
+        const mult =   (a,b) => a*b /* Funcion lambda que  implicito tiene una funcion de multiplicar*/
+        const dobleDe = a => 2*a
+        const getSaludo = () => 'Hola que tal!'/*() para que pueda ser tomado un string */
+        const getRandom1a1000 = () => {
+            let random = Math.random()  //0 ... 0.99999999^
+            random *= 1000               //0 ... 999.999999^
+            random = parseInt(random)    //0 ... 999
+            return ++random              //1 ... 1000
+        }
+        const saludar = () => console.log('Holaaaaaa!!!!')
+        const getPersona = () =>  ({nombre: 'Juan', edad: 23})
+        
+        //concatenacion de strings(JS5) 
+        console.log('La multiplicacion de ' + num1 + ' y ' + num2 + ' Es igual a ' +mult(num1,num2))
+
+        //template strings(ES6)  `` backtrick
+        console.log(`La multiplicacion de ${num1} y ${num2} Es igual a ${mult(num1,num2)}`)
+        console.log(`La doble  de ${num1}  es ${dobleDe(num1)}`)
+
+        console.log(getSaludo())
+
+        for(let i=0; i<5; i++) console.log(getRandom1a1000())
+        
+        saludar()
+
+    console.log(getPersona())
+</script>
+</body>
+</html>

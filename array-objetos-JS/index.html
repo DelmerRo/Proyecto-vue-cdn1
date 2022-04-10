@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array de Objetos / Objeto de Objetos</title>
+</head>
+<body>
+    <script>
+ /*------------------------------------------------------------------------*/
+ /*---------------------------ARRAY DE OBJETOS-----------------------------*/
+ /*------------------------------------------------------------------------*/
+var clientes = [
+    { nombre: 'Juan',   apellido: 'Perez',  edad: 23},
+    { nombre: 'Pedro',  apellido: 'Gomez',  edad: 24},
+    { nombre: 'Ana',    apellido: 'Mei',    edad: 27},
+    { nombre: 'Maria',  apellido: 'Blanco', edad: 33},
+    ]
+    console.log(clientes)
+    console.log('/*--------------Ciclo for-----------*/')
+    for(var i=0; i<clientes.length; i++){
+        console.log('El cliente se llama '+ clientes[i]['nombre'] + ' ' + clientes[i]['apellido'] + 
+        ' y tiene ' + clientes[i]['edad'] + ' años.'
+        )
+    
+        console.log('El cliente se llama '+ clientes[i].nombre + ' ' + clientes[i].apellido + 
+        ' y tiene ' + clientes[i].edad + ' años.'
+        )
+    }
+
+    console.log('\n/*--------Ciclo foreach-------------*/')
+    clientes.forEach(function(cliente,index){
+        //console.log(index)
+
+        console.log('El cliente se llama '+ cliente.nombre + ' ' + cliente.apellido + 
+        ' y tiene ' + cliente.edad + ' años.'
+        )
+    })
+
+    console.log('\n/*--------Ciclo -for of------------*/')
+for(var cliente of clientes){
+    console.log('El cliente se llama '+ cliente.nombre + ' ' + cliente.apellido + 
+        ' y tiene ' + cliente.edad + ' años.'
+        )
+}
+/*------------------------------------------------------------------------*/
+ /*---------------------------OBJETO DE OBJETOS-----------------------------*/
+ /*------------------------------------------------------------------------*/
+var clientes = {
+  cliente1:  { nombre: 'Juan',   apellido: 'Perez',  edad: 23},
+  cliente2: { nombre: 'Pedro',  apellido: 'Gomez',  edad: 24},
+  cliente3:  { nombre: 'Ana',    apellido: 'Mei',    edad: 27},
+  cliente4:  { nombre: 'Maria',  apellido: 'Blanco', edad: 33},
+}
+console.log(clientes)
+
+
+console.log('\n/*--------Ciclo -for in------------*/')
+for(var key in clientes){
+var cliente=clientes[key]
+console.log('El cliente se llama '+ cliente.nombre + ' ' + cliente.apellido + 
+        ' y tiene ' + cliente.edad + ' años.'
+        )
+}
+    </script>   
+</body>
+</html>
